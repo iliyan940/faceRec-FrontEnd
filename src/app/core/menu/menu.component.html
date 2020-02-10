@@ -1,7 +1,7 @@
-<div id="sidebar-wrapper">
-    <ul class="sidbar-nav">
-        <li>Cams</li>
-        <li>People</li>
-        <li>Data</li>
-    </ul>
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"> Navigation </div>
+    <div class="list-group list-group-flush">
+        <a [routerLink]="['']" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a [routerLink]="['persons']" class="list-group-item list-group-item-action bg-light">Persons</a>
+    </div>
 </div>
