@@ -10,27 +10,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr (click)="click()">
+      <tr *ngFor="let person of persons">
         <th scope="row">1</th>
-        <td>Mark</td>
+        <td>{{ person.name }}</td>
         <td>Otto</td>
         <td>2</td>
-        <td>No</td>
-        <td>10.10.2010</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>51</td>
-        <td>Yes</td>
-        <td>10.10.2010</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>13</td>
         <td>No</td>
         <td>10.10.2010</td>
       </tr>

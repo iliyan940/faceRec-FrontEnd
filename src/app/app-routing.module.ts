@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PersonsComponent } from './modules/home/persons/persons.component';
 import { DashboardComponent } from './modules/home/dashboard/dashboard.component';
+import { PersonDataResolver } from './core/resolvers/person.resolver';
 
 
 const routes: Routes = [
@@ -11,7 +12,10 @@ const routes: Routes = [
   },
   {
     path: "persons",
-    component: PersonsComponent
+    component: PersonsComponent,
+    resolve: {
+      persons: PersonDataResolver,
+    },
   }
 ];
 

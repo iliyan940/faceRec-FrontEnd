@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/home/dashboard/dashboard.component';
 import { MenuComponent } from './core/menu/menu.component';
 import { PersonsComponent } from './modules/home/persons/persons.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PersonsComponent } from './modules/home/persons/persons.component';
     PersonsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
