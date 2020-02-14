@@ -9,14 +9,12 @@ import { Person } from 'src/app/shared/models/person.model';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent {
-  routerEvent$;
   persons: Person[] = this.route.snapshot.data.persons;
-  loading: boolean;
-  
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router
     ) { }
+
 
 
 }

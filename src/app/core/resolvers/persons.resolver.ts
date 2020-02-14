@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { Resolve, ActivatedRouteSnapshot } from "@angular/router"
+import { Resolve } from "@angular/router"
 import { Observable } from "rxjs"
 import { Person } from 'src/app/shared/models/person.model';
 import { PersonDataService } from '../services/person-data.service'
@@ -7,11 +7,10 @@ import { PersonDataService } from '../services/person-data.service'
 @Injectable({
     providedIn: "root",
 })
-export class PersonDataResolver implements Resolve<Person> {
+export class PersonsDataResolver implements Resolve<Person[]> {
     constructor(private personService: PersonDataService) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<Person> {
-        let id = route.params.id;
-        return this.personService.get(id)
+    resolve(): Observable<Person[]> {
+        return this.personService.getAll()
     }
 }

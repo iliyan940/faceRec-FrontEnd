@@ -7,17 +7,20 @@
     ],
     "profile": { "name": "typicode" },
     "persons": [
-      {
+      { 
+        "id": 1,
         "name": "Mir",
         "apartment": "N2",
         "tenant": false
       },
       {
+        "id": 2,
         "name": "John",
         "apartment": "N22",
         "tenant": false
       },
       {
+        "id": 3,
         "name": "Doe",
         "apartment": "N412",
         "tenant": false

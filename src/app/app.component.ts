@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, NavigationStart, ResolveEnd } from '@angular/router';
 import { Person } from 'src/app/shared/models/person.model';
-import { filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import {Spinner} from 'spin.js';
 
 @Component({

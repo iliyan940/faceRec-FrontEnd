@@ -7,6 +7,7 @@ import { DashboardComponent } from './modules/home/dashboard/dashboard.component
 import { MenuComponent } from './core/menu/menu.component';
 import { PersonsComponent } from './modules/home/persons/persons.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PersonComponent } from './modules/home/person/person.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     MenuComponent,
     PersonsComponent,
+    PersonComponent,
   ],
   imports: [
     HttpClientModule,

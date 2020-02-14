@@ -6,16 +6,16 @@
         <th scope="col">Entries</th>
         <th scope="col">Apartment</th>
         <th scope="col">Tenant</th>
-        <th scope="col">Since</th>
+        <th scope="col">First Appearence</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of persons">
+      <tr *ngFor="let person of persons" [routerLink]="['/persons', person.id]">
         <th scope="row">1</th>
         <td>{{ person.name }}</td>
         <td>Otto</td>
-        <td>2</td>
-        <td>No</td>
+        <td>{{ person.apartment }}</td>
+        <td>{{ person.tenant }}</td>
         <td>10.10.2010</td>
       </tr>
     </tbody>
