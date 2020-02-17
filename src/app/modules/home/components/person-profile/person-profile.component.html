@@ -1,0 +1,36 @@
+
+<div class="card flex-row mr-3">
+    <img id="avatar" class="card-img-top" src="https://www.clevelanddentalhc.com/wp-content/uploads/2018/03/sample-avatar-300x300.jpg"  alt="avatar">
+    <div class="card-body">
+      <button id="editButton" class="btn btn-primary" (click)="turnEditModeOn()">Edit</button>
+  
+        <div class="form-group">
+          <small class="form-text text-muted">Name</small>
+          <input type="text" placeholder="Name" [disabled]="!editMode" value="{{ person.name }}" id="name" [ngClass]="{'editable': editMode}"/>
+        </div>
+        
+  
+        <div class="form-group">
+          <small class="form-text text-muted">Gender</small>
+          <input type="text" placeholder="Gender" [disabled]="!editMode" value="{{ person.gender }}" [ngClass]="{'editable': editMode}"/>
+        </div>
+  
+        <div class="form-group">
+          <small class="form-text text-muted">Age</small>
+          <input type="number" placeholder="Age" [disabled]="!editMode" value="{{ person.age }}" [ngClass]="{'editable': editMode}"/>
+        </div>
+        
+        <div class="form-group">
+          <small class="form-text text-muted">Facebook</small>
+          <input type="text" placeholder="Facebook" [disabled]="!editMode" value="{{ person.facebook }}" [ngClass]="{'editable': editMode}"/>
+        </div>
+        
+        <div class="details">
+          <a href="#" class="card-text">Labels: {{ person.labels.length }}</a>
+          <a href="#" class="card-text">Seen 93 times on the cameras</a>
+          <a href="#" class="card-text">Mood stats</a>
+          <p class="card-text">Learnt by 7 social media pictures</p>
+          <p class="card-text">Captured to smoke: true/false</p>
+        </div>
+    </div>
+  </div>

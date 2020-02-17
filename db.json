@@ -10,20 +10,34 @@
       { 
         "id": 1,
         "name": "Mir",
+        "gender": "Male",
+        "age": 23,
         "apartment": "N2",
-        "tenant": false
+        "tenant": false,
+        "labels": {},
+        "facebook": "https://www.facebook.com/"
       },
       {
         "id": 2,
         "name": "John",
+        "gender": "Male",
+        "age": 32,
         "apartment": "N22",
-        "tenant": false
+        "tenant": false,
+        "labels": {
+          
+        },
+        "facebook": "https://www.facebook.com/"
       },
       {
         "id": 3,
         "name": "Doe",
+        "gender": "Male",
+        "age": 55,
         "apartment": "N412",
-        "tenant": false
+        "tenant": false,
+        "labels": {},
+        "facebook": "https://www.facebook.com/"
       }
     ]
   }

@@ -1,0 +1,22 @@
+#avatar {
+    max-width: 300px;
+    max-height: 300px;
+    padding: 3px;
+}
+
+#editButton {
+    float: right;
+}
+
+input {
+    background-color: transparent;
+    border: transparent;
+}
+
+input.editable {
+    border-bottom: 1px solid black;
+}
+
+.details a {
+    display: block;
+} 

@@ -10,17 +10,16 @@ import * as Chart from 'chart.js'
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-  person: Person = this.route.snapshot.data.person;
   canvas: any;
   ctx: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
+  
 // https://www.cpdp.bg/?p=element&aid=424
   ngOnInit() {
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
  
-
     var stackedLine = new Chart(this.ctx, {
       type: 'line',
       data: [20, 10],
@@ -32,9 +31,6 @@ export class PersonComponent implements OnInit {
           }
       }
     });
-  
-  
-  
   
   }
 

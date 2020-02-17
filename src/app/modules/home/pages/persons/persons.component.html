@@ -10,8 +10,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of persons" [routerLink]="['/persons', person.id]">
-        <th scope="row">1</th>
+      <tr *ngFor="let person of persons; index as i" [routerLink]="['/persons', person.id]">
+        <th scope="row">{{ i + 1 }}</th>
         <td>{{ person.name }}</td>
         <td>Otto</td>
         <td>{{ person.apartment }}</td>
