@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PersonComponent } from './modules/home/pages/person/person.component';
 import { LabelsComponent } from './modules/home/components/labels/labels.component';
 import { PersonProfileComponent } from './modules/home/components/person-profile/person-profile.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { PersonProfileComponent } from './modules/home/components/person-profile
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
