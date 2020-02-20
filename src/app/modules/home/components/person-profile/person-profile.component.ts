@@ -8,16 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./person-profile.component.scss']
 })
 export class PersonProfileComponent implements OnInit {
-  person: Person = this.route.snapshot.data.person;
+  person: Person;
   editMode: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+    route.data.subscribe(
+      data => this.person = data['person']
+    );
+   }
 
   ngOnInit() {
+    console.log(this.person)
   }
 
   turnEditModeOn(): void {
     this.editMode = !this.editMode;
+    console.log(this.person)
+  }
+
+  get labelsCount(): number {
+    return Object.keys(this.person.labels).length;
   }
 
 }

@@ -1,12 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Store } from '@ngrx/store';
+import { Label } from '../../../../shared/models/label.model';
+import { Observable } from '@ngrx/store';
+import { AppState } from './../../../../app.state';
+
 
 @Component({
   selector: 'app-labels',
   templateUrl: './labels.component.html',
   styleUrls: ['./labels.component.scss']
 })
-export class LabelsComponent implements OnInit {
+export class LabelsComponent {
   labelForm: FormGroup;
   submitted: boolean = false;
   types = [
@@ -24,16 +30,14 @@ export class LabelsComponent implements OnInit {
     }
   ]
 
-  constructor(private formBuilder: FormBuilder) { 
 
+  constructor(private formBuilder: FormBuilder) 
+  { 
     this.labelForm = this.formBuilder.group({
       type: this.types[0],
       description: ['', [Validators.required, Validators.minLength(4)]]
     });
 
-  }
-
-  ngOnInit() {
   }
 
   add(): void {
