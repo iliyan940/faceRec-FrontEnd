@@ -6,7 +6,7 @@ import { environment } from "@environments/environment"
 import { delay, map, mapTo, tap } from 'rxjs/operators';
 import { LOAD_PERSONS, LoadPersons, LoadPersonsSuccess } from 'src/app/store/actions/persons.actions';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.state';
+import { AppState } from 'src/app/store/app.state';
 
 @Injectable({
   providedIn: 'root'
