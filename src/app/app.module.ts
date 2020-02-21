@@ -12,8 +12,10 @@ import { PersonProfileComponent } from './modules/home/components/person-profile
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './reducers/person.reducer';
-
+import { EffectsModule } from '@ngrx/effects';
+import { reducer } from './store/reducers/person.reducer';
+import { PersonsEffects } from './store/effects/persons.effects';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { reducer } from './reducers/person.reducer';
     PersonProfileComponent,
   ],
   imports: [
-    StoreModule.forRoot({ person: reducer }),
+    StoreModule.forRoot({ persons: reducer }),
+    EffectsModule.forRoot([PersonsEffects]),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

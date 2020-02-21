@@ -4,6 +4,7 @@ import { Person } from 'src/app/shared/models/person.model';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { Store } from '@ngrx/store';
+import * as PersonActions from 'src/app/store/actions/persons.actions';
 
 
 @Component({
@@ -11,14 +12,14 @@ import { Store } from '@ngrx/store';
   templateUrl: './persons.component.html',
   styleUrls: ['./persons.component.scss']
 })
-export class PersonsComponent {
+export class PersonsComponent implements OnInit{
   persons: Observable<Person[]>;
 
   constructor(private store: Store<AppState>) { 
-    this.persons = store.select('person');
-    console.log(this.persons)
+    this.persons = store.select('persons');
   }
 
-
+  ngOnInit() {
+  }
 
 }

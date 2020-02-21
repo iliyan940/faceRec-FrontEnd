@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Store } from '@ngrx/store';
-import { Label } from '../../../../shared/models/label.model';
-import { Observable } from '@ngrx/store';
-import { AppState } from './../../../../app.state';
-
-
 @Component({
   selector: 'app-labels',
   templateUrl: './labels.component.html',
