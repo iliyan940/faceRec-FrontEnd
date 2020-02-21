@@ -21,10 +21,15 @@ export class PersonsDataResolver implements Resolve<any> {
         //         tap(data => this.store.dispatch(new LoadPersonsSuccess(data)))
         //     );        
 
-
-        return this.store.select('loaded').pipe(
-            
-            tap((data) => console.log(data)),
+//use mergemap
+        return this.store.pipe(
+            select('persons'),
+            tap((data) => {
+                if(data.length == 0) {
+                    this.store.dispatch(new PersonActions.LoadPersons())
+                }
+            }),
+            tap(data => console.log(data)),
             first()
           );
     }

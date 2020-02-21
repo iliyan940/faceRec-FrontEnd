@@ -8,13 +8,10 @@ export function reducer(state: Person[] = initialState, action: PersonActions.Ac
         case PersonActions.ADD_PERSON:
             return [...state, action.payload];
         case PersonActions.LOAD_PERSONS:
-          console.log(action)
-          return { ...state, loading: true };
+          return { ...state };
         case PersonActions.LOAD_PERSONS_SUCCESS:
-          console.log('-------------------------LOAD_PERSONS_SUCCESS',state);
-          return [ ...state, ...action.payload];
+          return [...action.payload];
         default:
-            console.log(action)
             return state;
     }
 }
