@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects'; 
 import * as personActions from '../actions/persons.actions';
 import { PersonDataService } from '../../core/services/person-data.service'
-import { map, catchError, mergeMap } from 'rxjs/operators';
+import { map, catchError, mergeMap, tap, take } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 @Injectable()

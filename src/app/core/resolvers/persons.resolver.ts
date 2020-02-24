@@ -1,36 +1,39 @@
 import { Injectable } from "@angular/core"
 import { Resolve } from "@angular/router"
-import { Observable } from "rxjs"
+import { Observable, pipe } from "rxjs"
 import { Person } from 'src/app/shared/models/person.model';
 import { PersonDataService } from '../services/person-data.service'
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import * as PersonActions from 'src/app/store/actions/persons.actions';
-import { tap, first, filter } from 'rxjs/operators';
+import { tap, first, filter, delay, map, take, mergeMap, switchMap } from 'rxjs/operators';
 import { LoadPersonsSuccess } from 'src/app/store/actions/persons.actions';
+import { Actions, ofType } from '@ngrx/effects';
 
 @Injectable({
     providedIn: "root",
 })
 export class PersonsDataResolver implements Resolve<any> {
-    constructor(private personService: PersonDataService, private store: Store<AppState>) {}
+
+     isLoaded$ = this.store.pipe(
+         select('persons'),
+         map(persons => persons.length > 0)
+     );
+
+    constructor(
+        private personService: PersonDataService, 
+        private store: Store<AppState>,
+        private actions: Actions
+        ) {}
 
     resolve(): Observable<any> {
-        // return this.personService.getAll()
-        //     .pipe(
-        //         tap(data => this.store.dispatch(new LoadPersonsSuccess(data)))
-        //     );        
-
-//use mergemap
-        return this.store.pipe(
-            select('persons'),
-            tap((data) => {
-                if(data.length == 0) {
-                    this.store.dispatch(new PersonActions.LoadPersons())
-                }
-            }),
-            tap(data => console.log(data)),
-            first()
-          );
+        this.store.select('persons').pipe(take(1)).subscribe(p => {
+            this.store.dispatch(new PersonActions.LoadPersons());
+        });
+       
+        return this.actions.pipe(
+            ofType(PersonActions.LOAD_PERSONS_SUCCESS),
+            take(1)
+        );
     }
 }

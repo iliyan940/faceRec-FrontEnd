@@ -16,10 +16,7 @@ export class PersonDataService {
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 
   getAll(): Observable<Person[]> {
-    return this.http.get<Person[]>(`${environment.apiUrl}/persons`)
-      .pipe(
-        delay(500),
-      );
+    return this.http.get<Person[]>(`${environment.apiUrl}/persons`);
   }
 
   get(id): Observable<Person> {
