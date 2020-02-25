@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/shared/models/person.model';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-person-profile',
@@ -11,19 +14,17 @@ export class PersonProfileComponent implements OnInit {
   person: Person;
   editMode: boolean = false;
 
-  constructor(private route: ActivatedRoute) {
-    route.data.subscribe(
-      data => this.person = data['person']
-    );
-   }
-
+  constructor(private store: Store<AppState>) {
+    store.select(state => state.persons.activePerson).subscribe(person => {
+      this.person = person
+    });
+  }
+  
   ngOnInit() {
-    console.log(this.person)
   }
 
   turnEditModeOn(): void {
     this.editMode = !this.editMode;
-    console.log(this.person)
   }
 
   get labelsCount(): number {

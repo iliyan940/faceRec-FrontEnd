@@ -16,14 +16,14 @@ const routes: Routes = [
     path: "persons",
     component: PersonsComponent,
     resolve: {
-      persons: PersonsDataResolver,
+      loaded: PersonsDataResolver,
     },
   },
   {
     path: "persons/:id",
     component: PersonComponent,
     resolve: {
-      person: PersonDataResolver,
+      loaded: PersonDataResolver,
     },
   }
 ];

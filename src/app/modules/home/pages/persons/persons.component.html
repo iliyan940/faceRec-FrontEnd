@@ -9,8 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of persons | async" [routerLink]="['/persons', person.id]">
-      <!-- <tr *ngFor="let person of persons | async; index as i" [routerLink]="['/persons', person.id]"> -->
+      <tr *ngFor="let person of persons | async" [routerLink]="person.id">
         <th scope="row">{{ 1 }}</th>
         <td>{{ person.name }}</td>
         <td>{{ person.apartment }}</td>
