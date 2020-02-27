@@ -15,18 +15,21 @@ export function reducer(state = initialState, action: PersonActions.Actions) {
           return state;
           
         case PersonActions.LOAD_PERSON_SUCCESS:
-          return Object.assign({}, state, {
-            activePerson: action.payload
-          });
+          console.log(state)
+           return {
+             ...state,
+             activePerson: action.payload
+            };
 
         //for PERSONS
         case PersonActions.LOAD_PERSONS:
           return { ...state };
 
         case PersonActions.LOAD_PERSONS_SUCCESS:
-          return Object.assign({}, state, {
+          return  {
+            ...state,
             persons: action.payload
-          });
+          };
 
         default:
             return state;

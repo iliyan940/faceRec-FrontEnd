@@ -18,11 +18,26 @@ export class PersonsDataResolver implements Resolve<any> {
         ) {}
 
     resolve(): Observable<any> {
-        this.store.dispatch(new PersonActions.LoadPersons());
 
-        return this.actions.pipe(
-            ofType(PersonActions.LOAD_PERSONS_SUCCESS),
-            take(1)
-        );
+        let alreadyLoaded;
+        
+        this.store.select('persons').subscribe((persons) => {
+
+            if(persons.persons && persons.persons.length > 0) {
+                alreadyLoaded = true;
+            }
+        }).unsubscribe();
+
+        if(alreadyLoaded) {
+            return this.store.select(state => state.persons.persons).pipe(take(1));
+        } else {
+            this.store.dispatch(new PersonActions.LoadPersons());
+
+            return this.actions.pipe(
+                ofType(PersonActions.LOAD_PERSONS_SUCCESS),
+                take(1)
+            );
+        }
+
     }
 }

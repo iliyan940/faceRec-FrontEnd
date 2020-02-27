@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects'; 
 import * as personActions from '../actions/persons.actions';
 import { PersonDataService } from '../../core/services/person-data.service'
-import { map, catchError, mergeMap } from 'rxjs/operators';
+import { map, catchError, mergeMap, tap, take } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 @Injectable()
@@ -25,12 +25,14 @@ export class PersonsEffects {
     @Effect()
     loadPerson$ = this.actions$
         .pipe(
+            tap((test) => console.log(test)),
             ofType<any>(personActions.LOAD_PERSON),
             mergeMap((action) => this.personService.get(action.payload)
                 .pipe(
                     map(person => ({ type: personActions.LOAD_PERSON_SUCCESS, payload: person })),
-                    catchError(() => EMPTY)
+                    catchError(() => EMPTY),
                 )
             )
+           
         );
 }
