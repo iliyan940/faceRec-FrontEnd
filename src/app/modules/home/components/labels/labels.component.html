@@ -1,5 +1,6 @@
 
-<div class="card flex-row h-100">
+<app-spinner *ngIf="!loaded"></app-spinner>
+<div *ngIf="loaded" class="card flex-row h-100">
   <div class="card-body">
     
     <h2>Add Label</h2>
@@ -8,7 +9,7 @@
       <div class="form-group">
         <label for="type">Type</label>
         <select formControlName="type" name="type" class="form-control" id="type">
-          <option [ngValue]="type" *ngFor="let type of types"> {{ type.name }} </option>
+          <option [ngValue]="label" *ngFor="let label of labels"> {{ label.name }} </option>
         </select>
       </div>
       

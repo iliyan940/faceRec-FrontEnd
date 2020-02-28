@@ -1,14 +1,12 @@
 import { Injectable } from "@angular/core"
 import { Resolve, ActivatedRouteSnapshot } from "@angular/router"
-import { Observable, merge } from "rxjs"
+import { Observable } from "rxjs"
 import { Person } from 'src/app/shared/models/person.model';
 import { Actions, ofType } from '@ngrx/effects';
-import { AppState } from 'src/app/store/app.state';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as PersonActions from 'src/app/store/actions/persons.actions';
-import { take, tap, mergeMap } from 'rxjs/operators';
-import { PersonsEffects } from 'src/app/store/effects/persons.effects';
-
+import { take } from 'rxjs/operators';
+import * as fromApp from '@my-store/reducers/index';
 
 @Injectable({
     providedIn: "root",
@@ -16,7 +14,7 @@ import { PersonsEffects } from 'src/app/store/effects/persons.effects';
 export class PersonDataResolver implements Resolve<Person[]> {
 
     constructor(
-        private store: Store<AppState>,
+        private store: Store<fromApp.AppState>,
         private actions: Actions
     ) {}
 
@@ -28,7 +26,7 @@ export class PersonDataResolver implements Resolve<Person[]> {
         
         this.store.select('persons').subscribe((persons) => {
             if(persons.persons) {
-                persons.persons.forEach((person) => {
+                persons.persons.forEach((person: Person) => {
                     if(person.id == id) {
                         alreadyLoaded = true;
                         requestedPerson = person;

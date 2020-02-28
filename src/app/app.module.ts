@@ -13,8 +13,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducer } from './store/reducers/person.reducer';
 import { PersonsEffects } from './store/effects/persons.effects';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import * as fromApp from './store/reducers/index';
  
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { PersonsEffects } from './store/effects/persons.effects';
     PersonComponent,
     LabelsComponent,
     PersonProfileComponent,
+    ModalComponent,
+    SpinnerComponent,
   ],
   imports: [
-    StoreModule.forRoot({ persons: reducer }),
+    StoreModule.forRoot(fromApp.reducers),
     EffectsModule.forRoot([PersonsEffects]),
     HttpClientModule,
     BrowserModule,

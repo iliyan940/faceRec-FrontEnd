@@ -11,7 +11,6 @@ export const LOAD_PERSON_SUCCESS = '[PERSON] Load Success';
 export const LOAD_PERSONS = '[PERSONS] Load';
 export const LOAD_PERSONS_SUCCESS = '[PERSONS] Load Success';
 
-
 export class AddPerson implements Action {
     readonly type = ADD_PERSON
 

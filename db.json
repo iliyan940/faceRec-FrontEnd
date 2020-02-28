@@ -1,43 +1,57 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" },
-    "persons": [
-      { 
-        "id": 1,
-        "name": "Mir",
-        "gender": "Male",
-        "age": 23,
-        "apartment": "N2",
-        "tenant": false,
-        "labels": {},
-        "facebook": "https://www.facebook.com/"
-      },
-      {
-        "id": 2,
-        "name": "John",
-        "gender": "Male",
-        "age": 32,
-        "apartment": "N22",
-        "tenant": false,
-        "labels": {
-          
+  "labels": [
+    {
+      "id": 1,
+      "name": "Special"
+    },
+    {
+      "id": 2,
+      "name": "Warning"
+    },
+    {
+      "id": 3,
+      "name": "Suspension"
+    }
+  ],
+  "persons": [
+    { 
+      "id": 1,
+      "name": "Mir",
+      "gender": "Male",
+      "age": 23,
+      "apartment": "N2",
+      "tenant": false,
+      "labels": [
+        {
+          "id": 3,
+          "description": "initial test label"
         },
-        "facebook": "https://www.facebook.com/"
-      },
-      {
-        "id": 3,
-        "name": "Doe",
-        "gender": "Male",
-        "age": 55,
-        "apartment": "N412",
-        "tenant": false,
-        "labels": {},
-        "facebook": "https://www.facebook.com/"
-      }
-    ]
-  }
+        {
+          "id": 1,
+          "description": "initial test label"
+        }
+      ],
+      "facebook": "https://www.facebook.com/"
+    },
+    {
+      "id": 2,
+      "name": "John",
+      "gender": "Male",
+      "age": 32,
+      "apartment": "N22",
+      "tenant": false,
+      "labels": [],
+      "facebook": "https://www.facebook.com/"
+    },
+    {
+      "id": 3,
+      "name": "Doe",
+      "gender": "Male",
+      "age": 55,
+      "apartment": "N412",
+      "tenant": false,
+      "labels": [],
+      "facebook": "https://www.facebook.com/"
+    }
+  ]
+}

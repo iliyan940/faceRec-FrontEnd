@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core"
 import { Resolve } from "@angular/router"
 import { Observable } from "rxjs"
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.state';
+import * as fromApp from '@my-store/reducers/index';
 import * as PersonActions from 'src/app/store/actions/persons.actions';
-import { take } from 'rxjs/operators';
+import { take, delay } from 'rxjs/operators';
 import { Actions, ofType } from '@ngrx/effects';
 
 @Injectable({
@@ -13,7 +13,7 @@ import { Actions, ofType } from '@ngrx/effects';
 export class PersonsDataResolver implements Resolve<any> {
 
     constructor(
-        private store: Store<AppState>,
+        private store: Store<fromApp.AppState>,
         private actions: Actions
         ) {}
 

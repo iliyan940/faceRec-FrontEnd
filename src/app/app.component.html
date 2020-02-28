@@ -1,6 +1,6 @@
 <div class="d-flex " id="wrapper">
   <app-menu></app-menu>
-  <div #spinner></div>
+  <app-spinner *ngIf="!loaded"></app-spinner>
 
   <router-outlet></router-outlet>
 </div>

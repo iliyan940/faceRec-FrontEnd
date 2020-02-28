@@ -26,7 +26,7 @@
         </div>
         
         <div class="details">
-          <a href="#" class="card-text">Labels: {{ labelsCount }}</a>
+          <a class="card-text" data-target="#modal" data-toggle="modal">Labels: {{ labelsCount }}</a>
           <a href="#" class="card-text">Seen 93 times on the cameras</a>
           <a href="#" class="card-text">Mood stats</a>
           <p class="card-text">Learnt by 7 social media pictures</p>
@@ -34,3 +34,26 @@
         </div>
     </div>
   </div>
+
+  <app-modal>
+    <h5 title>Modal title</h5>
+
+    <table body class="table"> 
+
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let label of person.labels">
+          <td>{{ label.id }}</td>
+          <td>{{ label.description }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </app-modal>

@@ -1,37 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LabelService } from 'src/app/core/services/label.service';
+import { Label } from 'src/app/shared/models/label.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '@my-store/reducers/index';
 
 @Component({
   selector: 'app-labels',
   templateUrl: './labels.component.html',
   styleUrls: ['./labels.component.scss']
 })
-export class LabelsComponent {
+export class LabelsComponent implements OnInit{
   labelForm: FormGroup;
   submitted: boolean = false;
-  types = [
-    {
-      id: 1,
-      name: "Special"
-    },
-    {
-      id: 2,
-      name: "Warning"
-    },
-    {
-      id: 3,
-      name: "Suspension"
-    }
-  ]
+  labels: Label[];
+  loaded: boolean = false;
 
+  constructor(private formBuilder: FormBuilder, private labelService: LabelService, private store: Store<fromApp.AppState>){}
 
-  constructor(private formBuilder: FormBuilder) 
-  { 
-    this.labelForm = this.formBuilder.group({
-      type: this.types[0],
-      description: ['', [Validators.required, Validators.minLength(4)]]
+  ngOnInit() {
+    // this.store.dispatch();
+
+    this.store.select(state => state.persons.activePerson).subscribe(person => {
+
     });
 
+    this.labelService.getAll().subscribe((labels) => {
+      this.labels = labels;
+
+      this.labelForm = this.formBuilder.group({
+        type: this.labels[0],
+        description: ['', [Validators.required, Validators.minLength(4)]]
+      });
+
+      this.loaded = true;
+    })
   }
 
   add(): void {
@@ -42,8 +45,8 @@ export class LabelsComponent {
     }
 
     let newLabel = this.labelForm.value;
-
-    console.log(newLabel);
   }
+
+  
 
 }

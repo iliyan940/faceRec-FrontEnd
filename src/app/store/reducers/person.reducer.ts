@@ -1,7 +1,11 @@
 import * as PersonActions from '../actions/persons.actions';
-import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-const initialState: Object = {
+export interface State {
+  persons: [],
+  activePerson: {}
+}
+
+const initialState: State = {
   persons: [],
   activePerson: {}
 }
@@ -9,13 +13,12 @@ const initialState: Object = {
 export function reducer(state = initialState, action: PersonActions.Actions) {
     switch(action.type) {
         case PersonActions.ADD_PERSON:
-          return { state }
+          return state;
 
         case PersonActions.LOAD_PERSON:
           return state;
           
         case PersonActions.LOAD_PERSON_SUCCESS:
-          console.log(state)
            return {
              ...state,
              activePerson: action.payload

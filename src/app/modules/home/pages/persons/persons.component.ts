@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Person } from 'src/app/shared/models/person.model';
 import { Observable } from 'rxjs';
-import { AppState } from 'src/app/store/app.state';
+import * as fromApp from '@my-store/reducers/index';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 export class PersonsComponent implements OnInit{
   persons: Observable<Person[]>;
 
-  constructor(private store: Store<AppState>) { 
+  constructor(private store: Store<fromApp.AppState>) { 
     this.persons = store.select(state => state.persons.persons);
   }
 

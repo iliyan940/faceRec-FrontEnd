@@ -1,4 +1,4 @@
 export class Label {
-    type: number
+    id: number
     description: string
 }
