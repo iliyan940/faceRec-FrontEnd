@@ -21,11 +21,7 @@ export class LabelsComponent implements OnInit{
   ngOnInit() {
     // this.store.dispatch();
 
-    this.store.select(state => state.persons.activePerson).subscribe(person => {
-
-    });
-
-    this.labelService.getAll().subscribe((labels) => {
+    this.store.select(state => state.labels).subscribe(labels => {
       this.labels = labels;
 
       this.labelForm = this.formBuilder.group({
@@ -34,7 +30,18 @@ export class LabelsComponent implements OnInit{
       });
 
       this.loaded = true;
-    })
+    });
+
+    // this.labelService.getAll().subscribe((labels) => {
+    //   this.labels = labels;
+
+    //   this.labelForm = this.formBuilder.group({
+    //     type: this.labels[0],
+    //     description: ['', [Validators.required, Validators.minLength(4)]]
+    //   });
+
+    //   this.loaded = true;
+    // })
   }
 
   add(): void {

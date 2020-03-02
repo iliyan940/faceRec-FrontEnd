@@ -17,6 +17,7 @@ import { PersonsEffects } from './store/effects/persons.effects';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import * as fromApp from './store/reducers/index';
+import { LabelsEffects } from './store/effects/labels.effects';
  
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import * as fromApp from './store/reducers/index';
   ],
   imports: [
     StoreModule.forRoot(fromApp.reducers),
-    EffectsModule.forRoot([PersonsEffects]),
+    EffectsModule.forRoot([PersonsEffects, LabelsEffects]),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
