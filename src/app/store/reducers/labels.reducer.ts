@@ -22,5 +22,7 @@ export function reducer(state = initialState, action: labelsAction.Actions) {
                 labels: action.payload
             }
         }
+        default:
+            return state;
     }
 }

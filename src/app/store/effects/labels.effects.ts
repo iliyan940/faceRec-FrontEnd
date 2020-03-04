@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects'; 
 import * as labelActions from '../actions/labels.action';
 import { LabelService } from '../../core/services/label.service'
-import { map, catchError, mergeMap } from 'rxjs/operators';
+import { map, catchError, mergeMap, tap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 @Injectable()
