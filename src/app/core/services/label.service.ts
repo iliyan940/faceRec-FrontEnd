@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from "@environments/environment"
 import { Label } from 'src/app/shared/models/label.model';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

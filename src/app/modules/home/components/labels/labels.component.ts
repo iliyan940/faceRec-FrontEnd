@@ -16,7 +16,6 @@ export class LabelsComponent implements OnInit, OnDestroy{
   labelForm: FormGroup;
   submitted: boolean = false;
   labels: Label[] = [];
-  loaded: boolean = false;
   subscriptions = new Subscription();
 
   constructor(private formBuilder: FormBuilder, private labelService: LabelService, private store: Store<fromApp.AppState>){}
@@ -24,7 +23,6 @@ export class LabelsComponent implements OnInit, OnDestroy{
   ngOnInit() {
 
     let subscription = this.store.select(state => state.labels.labels).subscribe(labels => {
-      if(labels.length > 0) {
 
         this.labels = labels;
         
@@ -32,11 +30,6 @@ export class LabelsComponent implements OnInit, OnDestroy{
           type: this.labels[0],
           description: ['', [Validators.required, Validators.minLength(4)]]
         });
-
-        this.loaded = true;
-      } else {
-        this.store.dispatch(new LoadLabels());
-      }
 
     });
 

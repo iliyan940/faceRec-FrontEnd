@@ -14,14 +14,14 @@ export class PersonProfileComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
   storeSubscription: Subscription;
 
-  constructor(private store: Store<fromApp.AppState>) {
-    this.storeSubscription = store.select(state => state.persons.activePerson).subscribe((person: Person) => {
-      this.person = person
-    });
-  }
+  constructor(private store: Store<fromApp.AppState>) {}
   
   ngOnInit() {
+    this.storeSubscription = this.store.select(state => state.persons.activePerson).subscribe((person: Person) => {
+      this.person = person
 
+      console.log(person)
+    });
   }
 
   turnEditModeOn(): void {
