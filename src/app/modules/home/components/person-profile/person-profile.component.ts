@@ -17,10 +17,8 @@ export class PersonProfileComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) {}
   
   ngOnInit() {
-    this.storeSubscription = this.store.select(state => state.persons.activePerson).subscribe((person: Person) => {
+    this.storeSubscription = this.store.select(fromApp.getActivePerson).subscribe((person: Person) => {
       this.person = person
-
-      console.log(person)
     });
   }
 

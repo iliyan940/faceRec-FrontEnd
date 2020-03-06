@@ -13,7 +13,7 @@ export class PersonsComponent implements OnInit{
   persons: Observable<Person[]>;
 
   constructor(private store: Store<fromApp.AppState>) { 
-    this.persons = store.select(state => state.persons.persons);
+    this.persons = store.select(fromApp.getPersons);
   }
 
   ngOnInit() {

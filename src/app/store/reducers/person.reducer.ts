@@ -1,4 +1,5 @@
 import * as PersonActions from '../actions/persons.actions';
+import { createFeatureSelector } from '@ngrx/store';
 
 export interface State {
   persons: [],
@@ -38,4 +39,6 @@ export function reducer(state = initialState, action: PersonActions.Actions) {
             return state;
     }
 }
+
+export const getPersons = createFeatureSelector<State>('persons');
 

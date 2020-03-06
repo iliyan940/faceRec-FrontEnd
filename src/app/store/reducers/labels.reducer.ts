@@ -1,5 +1,6 @@
 import * as labelsAction from '../actions/labels.action';
 import { Label } from '../../shared/models/label.model';
+import { createFeatureSelector } from '@ngrx/store';
 
 export interface State {
     labels: Label[],
@@ -26,3 +27,5 @@ export function reducer(state = initialState, action: labelsAction.Actions) {
             return state;
     }
 }
+
+export const getLabels = createFeatureSelector<State>('labels');

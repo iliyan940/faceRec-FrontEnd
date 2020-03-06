@@ -22,10 +22,10 @@ export class LabelsComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
 
-    let subscription = this.store.select(state => state.labels.labels).subscribe(labels => {
+    let subscription = this.store.select(fromApp.getLabels).subscribe(labels => {
 
         this.labels = labels;
-        
+
         this.labelForm = this.formBuilder.group({
           type: this.labels[0],
           description: ['', [Validators.required, Validators.minLength(4)]]
@@ -44,6 +44,7 @@ export class LabelsComponent implements OnInit, OnDestroy{
     }
 
     let newLabel = this.labelForm.value;
+    // this.store.dispatch();
   }
 
   ngOnDestroy() {
