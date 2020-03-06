@@ -6,5 +6,5 @@ export class Person {
     apartment: string
     tenant: boolean
     facebook: string
-    labels: Object 
+    labels: []
 }

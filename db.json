@@ -27,6 +27,10 @@
           "description": "initial test label"
         },
         {
+          "id": 2,
+          "description": "initial test label"
+        },
+        {
           "id": 1,
           "description": "initial test label"
         }

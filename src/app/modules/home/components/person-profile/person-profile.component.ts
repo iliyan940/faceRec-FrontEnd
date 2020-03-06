@@ -3,6 +3,7 @@ import { Person } from 'src/app/shared/models/person.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '@my-store/reducers/index';
 import { Subscription } from 'rxjs';
+import * as PersonActions from 'src/app/store/actions/persons.actions';
 
 @Component({
   selector: 'app-person-profile',
@@ -28,6 +29,11 @@ export class PersonProfileComponent implements OnInit, OnDestroy {
 
   get labelsCount(): number {
     return Object.keys(this.person.labels).length;
+  }
+
+  deleteLabel(id, index) {
+    //todo declate type
+      this.store.dispatch(new PersonActions.DeleteLabel(id, index))
   }
 
   ngOnDestroy() {

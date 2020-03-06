@@ -11,19 +11,31 @@ export const LOAD_PERSON_SUCCESS = '[PERSON] Load Success';
 export const LOAD_PERSONS = '[PERSONS] Load';
 export const LOAD_PERSONS_SUCCESS = '[PERSONS] Load Success';
 
-export class AddPerson implements Action {
-    readonly type = ADD_PERSON
+//PERSON LABELS
+export const ADD_LABEL = '[LABEL] Add';
+export const DELETE_LABEL = '[LABEL] DELETE';
 
-    constructor(public payload: Person) {}
+export class AddLabel implements Action {
+    readonly type = ADD_LABEL;
+    readonly payload: any;
+
+    constructor(payload) {
+        this.payload = payload;
+    }
 }
 
-export class RemovePerson implements Action {
-    readonly type = REMOVE_PERSON;
+export class DeleteLabel implements Action {
+    readonly type = DELETE_LABEL;
+    readonly id: any;
+    readonly index: any;
 
-    constructor(public payload: Person) {}
+    constructor(id, index) {
+        this.id = id;
+        this.index = index;
+    }
 }
 
-
+// Persons
 export class LoadPerson implements Action {
     readonly type = LOAD_PERSON;
     readonly payload: any;
@@ -59,4 +71,4 @@ export class LoadPersonsSuccess implements Action {
 
 
 
-export type Actions = AddPerson | RemovePerson | LoadPersons | LoadPersonsSuccess | LoadPerson | LoadPersonSuccess;
+export type Actions = LoadPersons | LoadPersonsSuccess | LoadPerson | LoadPersonSuccess | AddLabel | DeleteLabel;

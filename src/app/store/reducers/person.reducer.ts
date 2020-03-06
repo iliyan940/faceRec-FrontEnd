@@ -1,5 +1,6 @@
 import * as PersonActions from '../actions/persons.actions';
 import { createFeatureSelector } from '@ngrx/store';
+import { act } from '@ngrx/effects';
 
 export interface State {
   persons: [],
@@ -13,9 +14,6 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: PersonActions.Actions) {
     switch(action.type) {
-        case PersonActions.ADD_PERSON:
-          return state;
-
         case PersonActions.LOAD_PERSON:
           return state;
           
@@ -34,6 +32,31 @@ export function reducer(state = initialState, action: PersonActions.Actions) {
             ...state,
             persons: action.payload
           };
+
+        case PersonActions.ADD_LABEL:
+          return {
+            ...state,
+            activePerson: {
+              ...state.activePerson,
+              labels: [
+                ...state.activePerson.labels,
+                action.payload
+              ]
+            }
+          }
+
+
+
+          case PersonActions.DELETE_LABEL:
+            let newLabels = state.activePerson.labels.splice(action.index, 1)
+
+            return {
+              ...state,
+              activePerson: {
+                ...state.activePerson,
+                labels: state.activePerson.labels
+              }
+            }
 
         default:
             return state;

@@ -15,9 +15,5 @@ export class LabelService {
   getAll(): Observable<Label[]> {
     return this.http.get<Label[]>(`${environment.apiUrl}/labels`);
   }
-  
-  create(label: Label): void {
-    this.http.post(`${environment}/label`, label);
-  }
 
 }

@@ -44,13 +44,15 @@
         <tr>
           <th>Type</th>
           <th>Description</th>
+          <th>Delete</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let label of person.labels">
+        <tr *ngFor="let label of person.labels; let i = index">
           <td>{{ label.id }}</td>
           <td>{{ label.description }}</td>
+          <td (click)="deleteLabel(label.id, i)">X</td>
         </tr>
       </tbody>
 

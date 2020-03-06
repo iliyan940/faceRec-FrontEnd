@@ -18,4 +18,5 @@ export class PersonDataService {
   get(id): Observable<Person> {
     return this.http.get<Person>(`${environment.apiUrl}/persons/${id}`);
   }
+  
 }

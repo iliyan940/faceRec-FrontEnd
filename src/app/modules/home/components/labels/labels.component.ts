@@ -4,8 +4,8 @@ import { LabelService } from 'src/app/core/services/label.service';
 import { Label } from 'src/app/shared/models/label.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '@my-store/reducers/index';
-import { LoadLabels } from '@my-store/actions/labels.action';
 import { Subscription } from 'rxjs';
+import * as PersonActions from 'src/app/store/actions/persons.actions';
 
 @Component({
   selector: 'app-labels',
@@ -44,7 +44,11 @@ export class LabelsComponent implements OnInit, OnDestroy{
     }
 
     let newLabel = this.labelForm.value;
-    // this.store.dispatch();
+    this.store.dispatch(new PersonActions.AddLabel({
+      id: newLabel.type.id,
+      description: newLabel.description
+    }));
+
   }
 
   ngOnDestroy() {
