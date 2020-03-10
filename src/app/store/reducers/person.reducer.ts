@@ -1,10 +1,10 @@
 import * as PersonActions from '../actions/persons.actions';
 import { createFeatureSelector } from '@ngrx/store';
-import { act } from '@ngrx/effects';
+import { Person } from 'src/app/shared/models/person.model';
 
 export interface State {
   persons: [],
-  activePerson: {}
+  activePerson: Person
 }
 
 const initialState: State = {

@@ -4,25 +4,28 @@
     <div class="card-body">
       <button id="editButton" class="btn btn-primary" (click)="turnEditModeOn()">Edit</button>
   
+
+      <form [formGroup]="personForm" (ngSubmit)=add()>
+
         <div class="form-group">
           <small class="form-text text-muted">Name</small>
-          <input type="text" placeholder="Name" [disabled]="!editMode" value="{{ person.name }}" id="name" [ngClass]="{'editable': editMode}"/>
+          <input formControlName="name" type="text" placeholder="Name" [ngClass]="{'editable': editMode}"/>
         </div>
         
   
         <div class="form-group">
           <small class="form-text text-muted">Gender</small>
-          <input type="text" placeholder="Gender" [disabled]="!editMode" value="{{ person.gender }}" [ngClass]="{'editable': editMode}"/>
+          <input formControlName="gender" type="text" placeholder="Gender" [ngClass]="{'editable': editMode}"/>
         </div>
   
         <div class="form-group">
           <small class="form-text text-muted">Age</small>
-          <input type="number" placeholder="Age" [disabled]="!editMode" value="{{ person.age }}" [ngClass]="{'editable': editMode}"/>
+          <input formControlName="age" type="number" placeholder="Age"  [ngClass]="{'editable': editMode}"/>
         </div>
         
         <div class="form-group">
           <small class="form-text text-muted">Facebook</small>
-          <input type="text" placeholder="Facebook" [disabled]="!editMode" value="{{ person.facebook }}" [ngClass]="{'editable': editMode}"/>
+          <input formControlName="facebook" type="text" placeholder="Facebook" value="{{ person.facebook }}" [ngClass]="{'editable': editMode}"/>
         </div>
         
         <div class="details">
@@ -32,26 +35,31 @@
           <p class="card-text">Learnt by 7 social media pictures</p>
           <p class="card-text">Captured to smoke: true/false</p>
         </div>
+
+      </form>
+
     </div>
   </div>
 
   <app-modal>
     <h5 title>Modal title</h5>
 
-    <table body class="table"> 
+    <table [formGroup]="personForm" body class="table"> 
 
       <thead>
         <tr>
           <th>Type</th>
           <th>Description</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
 
-      <tbody>
-        <tr *ngFor="let label of person.labels; let i = index">
-          <td>{{ label.id }}</td>
-          <td>{{ label.description }}</td>
+      <tbody formArrayName="labels">
+        <tr *ngFor="let label of labels.controls; let i = index" [formGroupName]="i">
+          <td> <input formControlName="name" type="text" /> </td>
+          <td> <input formControlName="description" type="text"  (focusout) = "updateLabel(i)" /> </td>
+          <td>Edit</td>
           <td (click)="deleteLabel(label.id, i)">X</td>
         </tr>
       </tbody>

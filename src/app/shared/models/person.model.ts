@@ -1,3 +1,5 @@
+import { Label } from './label.model'
+
 export class Person {
     id: number
     name: string
@@ -6,5 +8,5 @@ export class Person {
     apartment: string
     tenant: boolean
     facebook: string
-    labels: []
+    labels: Label[]
 }
